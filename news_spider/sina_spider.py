@@ -26,9 +26,8 @@ class SinaSpider(object):
     :param end_time: 结束时间
     """
 
-    def __init__(self, start_time, end_time):
+    def __init__(self, start_time):
         self.start_timestamp = string_transform_timestamp(start_time)
-        self.end_timestamp = string_transform_timestamp(end_time)
         self.flag = 0
         self.article_data_list = list()
         self.url_list = [
@@ -109,5 +108,5 @@ class SinaSpider(object):
 
 
 if __name__ == '__main__':
-    s = SinaSpider('2016-1-27 00:00:00', '2016-1-26 23:59:59')
+    s = SinaSpider('2016-1-27 00:00:00')
     s.main()

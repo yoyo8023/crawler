@@ -27,10 +27,8 @@ class SouhuSpider(object):
     :param end_time: 结束时间
     """
 
-    def __init__(self, url, start_time, end_time):
-        self.url = url
+    def __init__(self, start_time):
         self.start_timestamp = string_transform_timestamp(start_time)
-        self.end_timestamp = string_transform_timestamp(end_time)
         self.flag = 0
         self.article_data_list = list()
         self.url_list = [
@@ -179,6 +177,5 @@ class SouhuSpider(object):
 
 
 if __name__ == '__main__':
-    income_url = 'http://yule.sohu.com/tv.shtml'
-    souhu = SouhuSpider(income_url, '2016-1-26 12:30:00', '2016-1-25 10:00:59')
+    souhu = SouhuSpider('2016-1-26 12:30:00')
     souhu.main()

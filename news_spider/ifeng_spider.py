@@ -26,10 +26,8 @@ class IFengSpider(object):
     :param end_time: 结束时间
     """
 
-    def __init__(self, url, start_time, end_time):
-        self.url = url
+    def __init__(self, start_time):
         self.start_timestamp = string_transform_timestamp(start_time)
-        self.end_timestamp = string_transform_timestamp(end_time)
         self.flag = 0
         self.article_data_list = list()
         self.url_list = [
@@ -49,7 +47,7 @@ class IFengSpider(object):
         news_detail_list = list()
         for data in soup.select(".box_txt"):
             pub_timestamp = string_transform_timestamp(data.span.string + ':00')
-            if pub_timestamp < self.start_timestamp or pub_timestamp > self.end_timestamp:
+            if pub_timestamp < self.start_timestamp:
                 self.flag = 1
                 break
             news_detail_list.append(data.a['href'])
@@ -98,7 +96,7 @@ class IFengSpider(object):
             else:
                 date_time = data.span.string + ':00'
             pub_timestamp = string_transform_timestamp(date_time)
-            if pub_timestamp < self.start_timestamp or pub_timestamp > self.end_timestamp:
+            if pub_timestamp < self.start_timestamp:
                 self.flag = 1
                 break
             news_detail_list.append(data.p.a['href'])
@@ -171,6 +169,5 @@ class IFengSpider(object):
 
 
 if __name__ == '__main__':
-    income_url = 'http://yule.sohu.com/tv.shtml'
-    souhu = IFengSpider(income_url, '2016-1-20 00:00:00', '2016-1-21 23:59:59')
+    souhu = IFengSpider('2016-1-20 00:00:00')
     souhu.main()

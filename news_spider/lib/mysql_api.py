@@ -6,7 +6,6 @@ from datetime import datetime
 import MySQLdb
 
 from conf import settings
-from lib.char_change import char_change_latin
 
 
 import logging

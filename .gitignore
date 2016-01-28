@@ -1,0 +1,4 @@
+/news_spider/.idea
+/news_spider/conf/settings.py
+/news_spider/conf/settings_online.py
+/news_spider/lib/*.pyc

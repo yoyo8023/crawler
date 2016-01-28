@@ -8,7 +8,6 @@ from lib.char_change import sina_change_char
 from lib.date_transform import string_transform_timestamp
 from lib.mysql_api import insert_news_to_mysql
 from lib.oss_api import upload_img_to_oss2
-from lib.parser_html import strip_tags
 
 import logging
 import logging.config
@@ -37,6 +36,10 @@ class SinaSpider(object):
             '&versionNumber=1.2.8&page={page}&encode=utf-8&callback=feedCardJsonpCallback',
             'http://feed.mix.sina.com.cn/api/roll/get?pageid=51&lid=740'
             '&num=30&versionNumber=1.2.8&page={page}&encode=utf-8&callback=feedCardJsonpCallback',
+            'http://feed.mix.sina.com.cn/api/roll/get?pageid=105&lid=1217&num=30&versionNumber=1.2.8&page={page}'
+            '&encode=utf-8&callback=feedCardJsonpCallback',
+            'http://feed.mix.sina.com.cn/api/roll/get?pageid=50&lid=697&num=30&versionNumber=1.2.8&page={page}'
+            '&encode=utf-8&callback=feedCardJsonpCallback'
         ]
         self.pic_url_list = [
             'http://pic.yule.sohu.com/cate-911401.shtml'

@@ -11,8 +11,7 @@ def char_change_utf8(data):
 
 
 def char_change_ascii(data):
-    print data.encode('unicode-escape').decode('string-escape').decode('gbk', 'ignore').decode('string-escape')
-    return data.encode('unicode-escape').decode('string-escape').decode('gbk', 'ignore').decode('string-escape')
+    return data
 
 
 def sina_change_char(data_list):
@@ -53,7 +52,6 @@ def souhu_change_char(data_list):
 
 def ifeng_change_char(data_list):
     for index, data in enumerate(data_list):
-        print data
         for key in data.keys():
             if isinstance(data[key], list):
                 for img_index, img in enumerate(data[key]):

@@ -53,7 +53,6 @@ class IFengSpider(object):
                 break
             news_detail_list.append(data.a['href'])
         for news in news_detail_list:
-            print news
             tmp_dict = dict()
             try:
                 news_body = requests.get(news, timeout=3).text
@@ -64,13 +63,13 @@ class IFengSpider(object):
             news_soup = BeautifulSoup(news_body)
             title = get_tag_html(news_soup, 'h1')
             tmp_dict['title'] = title
+            print 'test', [title]
             # 获取文章内容
             artile = ''
             for a in news_soup.select("#main_content p"):
                 for string in a.strings:
                     artile += string.strip()
             tmp_dict['artile'] = artile
-            print artile
             # 获取图片
             img_list = list()
             for data in news_soup.select("#main_content"):
@@ -145,10 +144,10 @@ class IFengSpider(object):
             page = 1
             while self.flag != 1:
                 news_url = url.format(page=page)
-                print news_url
                 try:
                     self.detail_spider(news_url)
                 except Exception, info:
+                    logger.info("news_url %s" % news_url)
                     logger.info("news_url %s" % news_url)
                     logger.debug("Error '%s'" % info)
                 page += 1
@@ -159,7 +158,6 @@ class IFengSpider(object):
     def pic_main(self):
         for url in self.pic_url_list:
             page = 1
-            print page
             while self.flag != 1:
                 news_url = url.format(page=page)
                 try:
@@ -169,7 +167,6 @@ class IFengSpider(object):
                 page += 1
             self.flag = 0
         data = ifeng_change_char(self.article_data_list)
-        print data
         insert_news_to_mysql(data)
 
 

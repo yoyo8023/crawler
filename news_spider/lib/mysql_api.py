@@ -42,8 +42,6 @@ def insert_news_to_mysql(data_list):
                    ") values ('%s', '%s', '%s', '%s', '%s', '%s', '%s')"
     for data in data_list:
         artile = data['artile']
-        print artile.encode('unicode-escape')
-        print [artile]
         if not data['title'].strip():
             continue
         tmp_tuple = (data['title'],

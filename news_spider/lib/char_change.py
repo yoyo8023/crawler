@@ -11,8 +11,8 @@ def char_change_utf8(data):
 
 
 def char_change_ascii(data):
-    print data.encode('unicode-escape').decode('string-escape').decode('gbk', 'ignore')
-    return data.encode('unicode-escape').decode('string-escape').decode('gbk', 'ignore')
+    print data.encode('unicode-escape').decode('string-escape').decode('gbk', 'ignore').decode('string-escape')
+    return data.encode('unicode-escape').decode('string-escape').decode('gbk', 'ignore').decode('string-escape')
 
 
 def sina_change_char(data_list):

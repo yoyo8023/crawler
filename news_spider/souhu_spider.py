@@ -43,6 +43,7 @@ class SouhuSpider(object):
 
     def detail_spider(self, url):
         content = requests.get(url, timeout=3).text
+        content = char_change_gbk(content)
         soup = BeautifulSoup(content)
         news_detail_list = list()
         now_year = str(datetime.now().year)

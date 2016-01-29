@@ -174,5 +174,5 @@ class IFengSpider(object):
 
 
 if __name__ == '__main__':
-    souhu = IFengSpider('2016-1-29 00:00:00')
+    souhu = IFengSpider('2016-1-29 12:00:00')
     souhu.main()

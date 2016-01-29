@@ -1,12 +1,9 @@
 # coding:utf8
 import os
-import urllib
 from datetime import datetime
 
 import requests
 from bs4 import BeautifulSoup
-
-from lib.char_change import ifeng_change_char
 from lib.date_transform import string_transform_timestamp
 from lib.mysql_api import insert_news_to_mysql
 from lib.oss_api import upload_img_to_oss2
@@ -152,8 +149,7 @@ class IFengSpider(object):
                     logger.debug("Error '%s'" % info)
                 page += 1
             self.flag = 0
-        data = ifeng_change_char(self.article_data_list)
-        insert_news_to_mysql(data)
+        insert_news_to_mysql(self.article_data_list)
 
     def pic_main(self):
         for url in self.pic_url_list:
@@ -166,8 +162,7 @@ class IFengSpider(object):
                     logger.debug("Error '%s'" % info)
                 page += 1
             self.flag = 0
-        data = ifeng_change_char(self.article_data_list)
-        insert_news_to_mysql(data)
+        insert_news_to_mysql(self.article_data_list)
 
 
 if __name__ == '__main__':

@@ -6,7 +6,7 @@ from datetime import datetime
 import requests
 from bs4 import BeautifulSoup
 
-from lib.char_change import souhu_change_char
+from lib.char_change import char_change_gbk
 from lib.date_transform import string_transform_timestamp
 from lib.mysql_api import insert_news_to_mysql
 from lib.oss_api import upload_img_to_oss2
@@ -62,12 +62,12 @@ class SouhuSpider(object):
                 logger.debug(e.message)
                 continue
             news_body = r.text
+            news_body = char_change_gbk(news_body)
             news_soup = BeautifulSoup(news_body)
             if 'pic' not in news:
                 print news
                 title = get_tag_html(news_soup, 'h1')
                 tmp_dict['title'] = title
-
                 # 获取图片
                 img_list = list()
                 img_tag = '<div><img alt="{img_title}" src="{img_url}"><span>{img_title}</span></div>'
@@ -85,6 +85,7 @@ class SouhuSpider(object):
                     for string in a.strings:
                         if '_tvId' not in string:
                             artile += '<p>' + string.strip() + '</p>'
+                artile = artile.replace(u'搜狐娱乐讯 ', '')
                 tmp_dict['artile'] = artile
                 tmp_dict['img_list'] = img_list
                 tmp_dict['pic_mode'] = 0
@@ -112,6 +113,7 @@ class SouhuSpider(object):
             new_url = url.format(page='')
             try:
                 content = requests.get(new_url, timeout=3).text
+                content = char_change_gbk(content)
             except Exception as e:
                 logger.debug(e.message)
                 continue
@@ -134,13 +136,13 @@ class SouhuSpider(object):
                     traceback.print_exc()
                 max_page -= 1
             self.flag = 0
-        data = souhu_change_char(self.article_data_list)
-        insert_news_to_mysql(data)
+        insert_news_to_mysql(self.article_data_list)
 
     def pic_main(self):
         for url in self.pic_url_list:
             try:
                 content = requests.get(url, timeout=3).text
+                content = char_change_gbk(content)
             except Exception, info:
                 logger.debug("Error '%s'" % info)
                 continue
@@ -150,6 +152,7 @@ class SouhuSpider(object):
                 news_url = data['href']
                 try:
                     news_body = requests.get(news_url, timeout=3).text
+                    news_body = char_change_gbk(news_body)
                 except Exception, info:
                     logger.debug("Error '%s'" % info)
                     continue
@@ -176,8 +179,7 @@ class SouhuSpider(object):
                 tmp_dict['img_list'] = img_list
                 tmp_dict['source'] = news_url
                 self.article_data_list.append(tmp_dict)
-        data = souhu_change_char(self.article_data_list)
-        insert_news_to_mysql(data)
+        insert_news_to_mysql(self.article_data_list)
 
 
 if __name__ == '__main__':

@@ -4,7 +4,7 @@ import re
 import requests
 from bs4 import BeautifulSoup
 
-from lib.char_change import sina_change_char
+from lib.char_change import char_change_utf8
 from lib.date_transform import string_transform_timestamp
 from lib.mysql_api import insert_news_to_mysql
 from lib.oss_api import upload_img_to_oss2
@@ -65,6 +65,7 @@ class SinaSpider(object):
             tmp_dict['source'] = url
             try:
                 data_content = requests.get(url, timeout=3).text
+                data_content = char_change_utf8(data_content)
             except Exception as e:
                 logger.debug(e.message)
                 continue
@@ -89,6 +90,8 @@ class SinaSpider(object):
             for a in soup.select("[class~=content] p"):
                 for string in a.strings:
                     artile += '<p>'+string.strip()+'</p>'
+            artile = artile.replace(u'新浪娱乐讯 ', '')
+            artile = artile.replace(u'<p>[微博]</p>', '')
             tmp_dict['artile'] = artile
             tmp_dict['img_list'] = img_list
             tmp_dict['pic_mode'] = 0
@@ -105,10 +108,9 @@ class SinaSpider(object):
                     logger.debug(e.message)
                 page += 1
             self.flag = 0
-        data = sina_change_char(self.article_data_list)
-        insert_news_to_mysql(data)
+        insert_news_to_mysql(self.article_data_list)
 
 
 if __name__ == '__main__':
-    s = SinaSpider('2016-1-28 12:00:00')
+    s = SinaSpider('2016-1-29 12:00:00')
     s.main()

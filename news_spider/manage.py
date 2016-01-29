@@ -1,19 +1,24 @@
 # coding:utf8
 import sys
+from datetime import datetime, timedelta
 
 from ifeng_spider import IFengSpider
 from sina_spider import SinaSpider
 from souhu_spider import SouhuSpider
 
 if __name__ == '__main__':
+    now_time = datetime.now()
+    now_time += timedelta(hours=-10)
+    now_time_str = now_time.strftime("%Y-%m-%d %H:%M:%S")
+    print now_time_str
     if sys.argv[1] == 'sina':
-        sina = SinaSpider('2016-1-27 00:00:00')
+        sina = SinaSpider(now_time_str)
         sina.main()
     if sys.argv[1] == 'souhu':
-        souhu = SouhuSpider('2016-1-26 12:30:00')
+        souhu = SouhuSpider(now_time_str)
         souhu.main()
         souhu.pic_main()
     if sys.argv[1] == 'ifeng':
-        ifeng = IFengSpider('2016-1-20 00:00:00')
+        ifeng = IFengSpider(now_time_str)
         ifeng.main()
         ifeng.pic_main()

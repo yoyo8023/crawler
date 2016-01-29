@@ -1,3 +1,4 @@
 oss2==2.0.5
 MySQL-python==1.2.5
 requests==2.8.1
+BeautifulSoup==3.2.1

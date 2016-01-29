@@ -6,6 +6,7 @@ from datetime import datetime
 import requests
 from bs4 import BeautifulSoup
 
+from lib.char_change import ifeng_change_char
 from lib.date_transform import string_transform_timestamp
 from lib.mysql_api import insert_news_to_mysql
 from lib.oss_api import upload_img_to_oss2
@@ -63,7 +64,9 @@ class IFengSpider(object):
             news_soup = BeautifulSoup(news_body)
             title = get_tag_html(news_soup, 'h1')
             tmp_dict['title'] = title
-            print title
+            import chardet
+            print chardet.detect(title)
+
             # 获取文章内容
             artile = ''
             for a in news_soup.select("#main_content p"):
@@ -153,7 +156,8 @@ class IFengSpider(object):
                     logger.debug("Error '%s'" % info)
                 page += 1
             self.flag = 0
-        insert_news_to_mysql(self.article_data_list)
+        data = ifeng_change_char(self.article_data_list)
+        insert_news_to_mysql(data)
 
     def pic_main(self):
         for url in self.pic_url_list:
@@ -167,9 +171,11 @@ class IFengSpider(object):
                     logger.debug("Error '%s'" % info)
                 page += 1
             self.flag = 0
-        insert_news_to_mysql(self.article_data_list)
+        data = ifeng_change_char(self.article_data_list)
+        print data
+        insert_news_to_mysql(data)
 
 
 if __name__ == '__main__':
-    souhu = IFengSpider('2016-1-28 00:00:00')
+    souhu = IFengSpider('2016-1-29 00:00:00')
     souhu.main()

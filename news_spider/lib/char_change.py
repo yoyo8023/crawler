@@ -44,3 +44,19 @@ def souhu_change_char(data_list):
                 except Exception as e:
                     print e
     return data_list
+
+
+def ifeng_change_char(data_list):
+    for index, data in enumerate(data_list):
+        print data
+        for key in data.keys():
+            if isinstance(data[key], list):
+                for img_index, img in enumerate(data[key]):
+                    data_list[index][key][img_index][0] = char_change_gbk(img[0])
+                    data_list[index][key][img_index][1] = char_change_gbk(img[1])
+            else:
+                try:
+                    data_list[index][key] = char_change_gbk(data[key])
+                except Exception as e:
+                    print e
+    return data_list

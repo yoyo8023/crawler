@@ -63,15 +63,11 @@ class IFengSpider(object):
             news_soup = BeautifulSoup(news_body)
             title = get_tag_html(news_soup, 'h1')
             tmp_dict['title'] = title
-            print 'test', [title]
             # 获取文章内容
             artile = ''
-            for a in news_soup.select("#main_content p"):
-                for string in a.strings:
-                    artile += string.strip()
-            tmp_dict['artile'] = artile
             # 获取图片
             img_list = list()
+            img_tag = '<div><img alt="{img_title}" src="{img_url}"><span>{img_title}</span></div>'
             for data in news_soup.select("#main_content"):
                 img_title = data.span.string
                 img_url = data.p.img['src']
@@ -79,6 +75,11 @@ class IFengSpider(object):
                 status, msg, img_url = upload_img_to_oss2(img_url)
                 if status:
                     img_list.append([img_title, img_url])
+                    artile += img_tag.format(img_url=img_url, img_title=img_title)
+            for a in news_soup.select("#main_content p"):
+                for string in a.strings:
+                    artile += '<p>'+string.strip()+'</p>'
+            tmp_dict['artile'] = artile
             tmp_dict['img_list'] = img_list
             tmp_dict['source'] = news
             tmp_dict['pic_mode'] = 1
@@ -100,7 +101,6 @@ class IFengSpider(object):
                 break
             news_detail_list.append(data.p.a['href'])
         for news in news_detail_list:
-            print news
             tmp_dict = dict()
             try:
                 news_body = requests.get(news, timeout=3).text

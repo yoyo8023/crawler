@@ -64,9 +64,6 @@ class IFengSpider(object):
             news_soup = BeautifulSoup(news_body)
             title = get_tag_html(news_soup, 'h1')
             tmp_dict['title'] = title
-            import chardet
-            print chardet.detect(title)
-
             # 获取文章内容
             artile = ''
             for a in news_soup.select("#main_content p"):

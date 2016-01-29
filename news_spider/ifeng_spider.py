@@ -113,10 +113,11 @@ class IFengSpider(object):
             title = get_tag_html(news_soup, 'h1')
             tmp_dict['title'] = title
             # 获取文章内容
-            artile = ''
             content_list = news_body.split('\n')
             artile_list = list()
             img_list = list()
+            img_tag = '<div><img alt="{img_title}" src="{img_url}"><span>{img_title}</span></div>'
+            artile = ''
             for em in content_list:
                 if '{title:' in em:
                     em = em.replace("{title:'", "")
@@ -129,7 +130,8 @@ class IFengSpider(object):
                     # 上传图片到阿里云
                     status, msg, img_url = upload_img_to_oss2(em.strip())
                     if status:
-                        img_list.append((img_title, img_url))
+                        artile += img_tag.format(img_url=img_url, img_title=img_title)
+                        img_list.append([img_title, img_url])
             for content in set(artile_list):
                 artile += content
             tmp_dict['artile'] = artile
@@ -148,7 +150,7 @@ class IFengSpider(object):
                     self.detail_spider(news_url)
                 except Exception, info:
                     logger.info("news_url %s" % news_url)
-                    logger.debug("Error '%s' happened on line %d" % (info[0], info[1][1]))
+                    logger.debug("Error '%s'" % info)
                 page += 1
             self.flag = 0
         insert_news_to_mysql(self.article_data_list)
@@ -162,12 +164,12 @@ class IFengSpider(object):
                 try:
                     self.pic_detail_spider(news_url)
                 except Exception, info:
-                    logger.debug("Error '%s' happened on line %d" % (info[0], info[1][1]))
+                    logger.debug("Error '%s'" % info)
                 page += 1
             self.flag = 0
         insert_news_to_mysql(self.article_data_list)
 
 
 if __name__ == '__main__':
-    souhu = IFengSpider('2016-1-20 00:00:00')
+    souhu = IFengSpider('2016-1-28 00:00:00')
     souhu.main()

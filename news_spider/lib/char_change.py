@@ -22,6 +22,7 @@ def sina_change_char(data_list):
                     data_list[index][key] = char_change_utf8(data[key])
                     if key == 'artile':
                         data_list[index][key] = data_list[index][key].replace(u'新浪娱乐讯 ', '')
+                        data_list[index][key] = data_list[index][key].replace(u'<p>[微博]</p>', '')
                 except Exception as e:
                     print e
     return data_list

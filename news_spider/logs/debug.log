@@ -3334,3 +3334,561 @@ Thu, 28 Jan 2016 15:28:03 auth.py[line:49] DEBUG string_to_sign=PUT
 image/jpeg
 Thu, 28 Jan 2016 07:28:03 GMT
 /huochuanmei/hcmcrawler/news/20160128/532ab6e0-d6ad-484f-b4b8-b0f7e5dd3a79.jpg
+Thu, 28 Jan 2016 16:16:12 souhu_spider.py[line:130] DEBUG Error 'integer division or modulo by zero'
+Thu, 28 Jan 2016 16:16:19 souhu_spider.py[line:130] DEBUG Error 'integer division or modulo by zero'
+Thu, 28 Jan 2016 16:19:25 souhu_spider.py[line:62] DEBUG HTTPConnectionPool(host='pic.yule.sohu.com', port=80): Read timed out. (read timeout=3)
+Thu, 28 Jan 2016 16:36:00 sina_spider.py[line:69] DEBUG HTTPConnectionPool(host='slide.ent.sina.com.cn', port=80): Max retries exceeded with url: /y/h/slide_4_704_131416.html (Caused by ConnectTimeoutError(<requests.packages.urllib3.connection.HTTPConnection object at 0x0000000006023908>, 'Connection to slide.ent.sina.com.cn timed out. (connect timeout=3)'))
+Thu, 28 Jan 2016 16:54:07 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 08:54:07 GMT
+/huochuanmei/hcmcrawler/news/20160128/6725b298-70c9-4533-ad5d-f03c96a56da7.jpg
+Thu, 28 Jan 2016 16:54:08 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 08:54:08 GMT
+/huochuanmei/hcmcrawler/news/20160128/43023205-a4d2-4352-8250-c79a6cf65647.jpg
+Thu, 28 Jan 2016 16:54:09 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 08:54:09 GMT
+/huochuanmei/hcmcrawler/news/20160128/e372da11-c162-4446-8b19-0c1d4dae5580.jpg
+Thu, 28 Jan 2016 16:54:09 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 08:54:09 GMT
+/huochuanmei/hcmcrawler/news/20160128/74d654d4-d6b2-467e-8377-37413620c41d.jpg
+Thu, 28 Jan 2016 16:54:09 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 08:54:09 GMT
+/huochuanmei/hcmcrawler/news/20160128/14e1167e-b1f7-47ca-98ab-236da6789906.jpg
+Thu, 28 Jan 2016 16:54:10 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 08:54:10 GMT
+/huochuanmei/hcmcrawler/news/20160128/36ba124d-b9cf-4ed9-90c2-282bfa3c2612.jpg
+Thu, 28 Jan 2016 16:54:11 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 08:54:11 GMT
+/huochuanmei/hcmcrawler/news/20160128/3061281c-8c10-40a6-81e3-559025fe4ba6.jpg
+Thu, 28 Jan 2016 16:54:11 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 08:54:11 GMT
+/huochuanmei/hcmcrawler/news/20160128/c8f45ffe-ac39-48f2-944d-f5f6489b5667.jpg
+Thu, 28 Jan 2016 16:54:12 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 08:54:12 GMT
+/huochuanmei/hcmcrawler/news/20160128/2ab0849e-923e-4f31-a9ed-2654df7af464.jpg
+Thu, 28 Jan 2016 16:54:12 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 08:54:12 GMT
+/huochuanmei/hcmcrawler/news/20160128/c62da58e-062b-4e88-b51d-c6b42f8263a0.jpg
+Thu, 28 Jan 2016 16:54:13 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 08:54:13 GMT
+/huochuanmei/hcmcrawler/news/20160128/c03a382b-ea01-4a4a-b5ce-36bd59b66aa5.jpg
+Thu, 28 Jan 2016 16:54:14 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 08:54:14 GMT
+/huochuanmei/hcmcrawler/news/20160128/a02718fc-f54d-4ee8-a1a6-6a4f6fc8be74.jpg
+Thu, 28 Jan 2016 16:54:16 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 08:54:16 GMT
+/huochuanmei/hcmcrawler/news/20160128/7944baba-9dd7-4891-945e-937eaf007278.jpg
+Thu, 28 Jan 2016 16:54:16 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 08:54:16 GMT
+/huochuanmei/hcmcrawler/news/20160128/2d6ea68c-3e19-4c4b-8686-778a10c4804d.jpg
+Thu, 28 Jan 2016 16:54:17 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 08:54:17 GMT
+/huochuanmei/hcmcrawler/news/20160128/474c692e-5979-4e23-8295-90e3164bb0f9.jpg
+Thu, 28 Jan 2016 16:54:18 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/png
+Thu, 28 Jan 2016 08:54:18 GMT
+/huochuanmei/hcmcrawler/news/20160128/e9f41ff8-fd43-45c5-a219-b78dd66a6738.png
+Thu, 28 Jan 2016 16:54:19 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/png
+Thu, 28 Jan 2016 08:54:19 GMT
+/huochuanmei/hcmcrawler/news/20160128/ce0b3347-6f16-41a1-b6e5-df984409155b.png
+Thu, 28 Jan 2016 16:54:21 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/png
+Thu, 28 Jan 2016 08:54:21 GMT
+/huochuanmei/hcmcrawler/news/20160128/057a3bee-826b-4d55-b7a1-ccd7b63b3162.png
+Thu, 28 Jan 2016 16:54:24 sina_spider.py[line:69] DEBUG HTTPConnectionPool(host='ent.sina.com.cn', port=80): Read timed out. (read timeout=3)
+Thu, 28 Jan 2016 16:54:25 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 08:54:25 GMT
+/huochuanmei/hcmcrawler/news/20160128/7352b882-392c-4ad6-bde5-8f7f1c99b495.jpg
+Thu, 28 Jan 2016 16:54:26 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 08:54:26 GMT
+/huochuanmei/hcmcrawler/news/20160128/13674305-ad83-4394-b50c-68ef88844295.jpg
+Thu, 28 Jan 2016 16:54:26 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 08:54:26 GMT
+/huochuanmei/hcmcrawler/news/20160128/ad45aec6-b133-4bfc-8d51-736fe97f942a.jpg
+Thu, 28 Jan 2016 16:54:26 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 08:54:26 GMT
+/huochuanmei/hcmcrawler/news/20160128/cf4f56d3-3de9-49e2-b5d9-ca1c7c7ebc7f.jpg
+Thu, 28 Jan 2016 16:54:26 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 08:54:26 GMT
+/huochuanmei/hcmcrawler/news/20160128/56c5f61d-781c-47ee-8e65-7a4e96f11227.jpg
+Thu, 28 Jan 2016 16:54:28 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 08:54:28 GMT
+/huochuanmei/hcmcrawler/news/20160128/fa8ba644-334a-41bb-b881-59dd08b3233e.jpg
+Thu, 28 Jan 2016 16:54:28 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 08:54:28 GMT
+/huochuanmei/hcmcrawler/news/20160128/6a70a36d-c886-4059-8e9b-d89c7ed0d738.jpg
+Thu, 28 Jan 2016 16:54:29 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 08:54:29 GMT
+/huochuanmei/hcmcrawler/news/20160128/1c3d2ee9-222d-4916-890b-c18158a4bcb7.jpg
+Thu, 28 Jan 2016 16:54:29 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 08:54:29 GMT
+/huochuanmei/hcmcrawler/news/20160128/fe0eba4c-70cf-4dba-a912-0a1c1d86a277.jpg
+Thu, 28 Jan 2016 16:54:29 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 08:54:29 GMT
+/huochuanmei/hcmcrawler/news/20160128/f6a34525-8da1-4d61-91e9-1c386c7649a2.jpg
+Thu, 28 Jan 2016 17:49:11 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 09:49:11 GMT
+/huochuanmei/hcmcrawler/news/20160128/99472b6b-ca0b-4ef0-a30a-94abf70f4cbb.jpg
+Thu, 28 Jan 2016 17:49:11 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 09:49:11 GMT
+/huochuanmei/hcmcrawler/news/20160128/84e27849-1f20-4db8-9a7a-6ad1ee750a11.jpg
+Thu, 28 Jan 2016 17:49:12 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 09:49:12 GMT
+/huochuanmei/hcmcrawler/news/20160128/0607a741-0913-4f74-a5ac-6a748d1c2ccb.jpg
+Thu, 28 Jan 2016 17:49:13 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 09:49:13 GMT
+/huochuanmei/hcmcrawler/news/20160128/5a903600-b4b3-4939-ae81-b4897f31038a.jpg
+Thu, 28 Jan 2016 17:49:13 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 09:49:13 GMT
+/huochuanmei/hcmcrawler/news/20160128/d86d1b0d-24da-4387-b36e-cdef1783af34.jpg
+Thu, 28 Jan 2016 17:49:14 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 09:49:14 GMT
+/huochuanmei/hcmcrawler/news/20160128/1bbbab9c-d935-477e-b779-99b8c3d8dcb6.jpg
+Thu, 28 Jan 2016 17:49:15 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 09:49:15 GMT
+/huochuanmei/hcmcrawler/news/20160128/d6bf503f-e920-4132-8cc3-5f756f8db085.jpg
+Thu, 28 Jan 2016 17:49:15 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 09:49:15 GMT
+/huochuanmei/hcmcrawler/news/20160128/ee0ac2c5-34c6-4f0f-951b-ece5ba9beb2d.jpg
+Thu, 28 Jan 2016 17:49:15 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 09:49:15 GMT
+/huochuanmei/hcmcrawler/news/20160128/481dd34c-9f5e-4d83-8589-5fa37ee70bb9.jpg
+Thu, 28 Jan 2016 17:49:15 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 09:49:15 GMT
+/huochuanmei/hcmcrawler/news/20160128/a25b6466-c224-4e97-9daa-31219e965d2c.jpg
+Thu, 28 Jan 2016 17:49:17 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 09:49:17 GMT
+/huochuanmei/hcmcrawler/news/20160128/6b54b1f7-50e3-4a77-8574-d887c2c2860a.jpg
+Thu, 28 Jan 2016 17:49:18 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 09:49:18 GMT
+/huochuanmei/hcmcrawler/news/20160128/438c9755-21e8-43ec-a1b7-e51819f6cc1f.jpg
+Thu, 28 Jan 2016 17:49:19 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 09:49:19 GMT
+/huochuanmei/hcmcrawler/news/20160128/068ea61f-54fd-4d00-925e-84742759cd81.jpg
+Thu, 28 Jan 2016 17:49:19 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 09:49:19 GMT
+/huochuanmei/hcmcrawler/news/20160128/95cb3d17-651f-4e4a-972f-552f855f21d1.jpg
+Thu, 28 Jan 2016 17:49:20 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 09:49:20 GMT
+/huochuanmei/hcmcrawler/news/20160128/9fe9ad7f-e64c-4fde-a595-8693fd068b3d.jpg
+Thu, 28 Jan 2016 17:49:21 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/png
+Thu, 28 Jan 2016 09:49:21 GMT
+/huochuanmei/hcmcrawler/news/20160128/30cf9410-ac0c-4421-b4de-eb936bc7d4d0.png
+Thu, 28 Jan 2016 17:49:21 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/png
+Thu, 28 Jan 2016 09:49:21 GMT
+/huochuanmei/hcmcrawler/news/20160128/76067f60-ccd2-413c-ae5c-cc99e0b2a896.png
+Thu, 28 Jan 2016 17:49:23 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/png
+Thu, 28 Jan 2016 09:49:23 GMT
+/huochuanmei/hcmcrawler/news/20160128/a4e36117-b010-4578-b90b-5f2ab6591039.png
+Thu, 28 Jan 2016 17:49:25 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 09:49:25 GMT
+/huochuanmei/hcmcrawler/news/20160128/e94ec836-e3ba-411c-ae95-b0125cade388.jpg
+Thu, 28 Jan 2016 17:49:26 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 09:49:26 GMT
+/huochuanmei/hcmcrawler/news/20160128/16ed41d3-fd7d-4329-b5f2-91f41a9c7e32.jpg
+Thu, 28 Jan 2016 17:49:26 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 09:49:26 GMT
+/huochuanmei/hcmcrawler/news/20160128/82ddecaf-52c9-446a-be38-da8f40a320c9.jpg
+Thu, 28 Jan 2016 17:49:26 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 09:49:26 GMT
+/huochuanmei/hcmcrawler/news/20160128/55f94144-6354-456b-921e-0faaf8b4092b.jpg
+Thu, 28 Jan 2016 17:49:26 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 09:49:26 GMT
+/huochuanmei/hcmcrawler/news/20160128/32b52a2c-e85e-4b20-8c07-c1cce40e2d05.jpg
+Thu, 28 Jan 2016 17:49:27 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 09:49:27 GMT
+/huochuanmei/hcmcrawler/news/20160128/e35a78f1-a6ce-4356-8b91-a9d9f357775d.jpg
+Thu, 28 Jan 2016 17:49:27 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 09:49:27 GMT
+/huochuanmei/hcmcrawler/news/20160128/5d75ae74-c528-4557-a66c-be30f4a845b1.jpg
+Thu, 28 Jan 2016 17:49:28 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 09:49:28 GMT
+/huochuanmei/hcmcrawler/news/20160128/21094a42-c317-4013-8595-b944ce68c183.jpg
+Thu, 28 Jan 2016 17:49:28 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 09:49:28 GMT
+/huochuanmei/hcmcrawler/news/20160128/5edb38de-d54c-40e0-9698-0cd56adbf017.JPG
+Thu, 28 Jan 2016 17:49:28 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 09:49:28 GMT
+/huochuanmei/hcmcrawler/news/20160128/ea763497-eedf-4cb4-be5a-dc9fa8ae0ef2.JPG
+Thu, 28 Jan 2016 17:49:28 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 09:49:28 GMT
+/huochuanmei/hcmcrawler/news/20160128/3abf6abe-beec-4477-a5e7-26a6bac3e0b5.JPG
+Thu, 28 Jan 2016 17:49:29 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 09:49:29 GMT
+/huochuanmei/hcmcrawler/news/20160128/bcd57f25-83fb-48b9-ac9d-5744e9bc0409.JPG
+Thu, 28 Jan 2016 17:49:29 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 09:49:29 GMT
+/huochuanmei/hcmcrawler/news/20160128/f6850c11-ca52-4ee9-9a1b-3e1bdf3d32a9.jpg
+Thu, 28 Jan 2016 17:49:30 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 09:49:30 GMT
+/huochuanmei/hcmcrawler/news/20160128/16de1014-c7f6-4a53-81fe-fde0ae4cefb4.jpg
+Thu, 28 Jan 2016 17:49:30 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 09:49:30 GMT
+/huochuanmei/hcmcrawler/news/20160128/30a59632-a006-4eb0-8ff6-5412dd8cba05.jpg
+Thu, 28 Jan 2016 17:49:31 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 09:49:31 GMT
+/huochuanmei/hcmcrawler/news/20160128/2799690b-649d-42a6-9733-05d5546d20ce.jpg
+Thu, 28 Jan 2016 17:49:32 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 09:49:32 GMT
+/huochuanmei/hcmcrawler/news/20160128/a07ac4ae-059f-4511-810c-e9669812ee70.jpg
+Thu, 28 Jan 2016 17:49:32 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 09:49:32 GMT
+/huochuanmei/hcmcrawler/news/20160128/3e1bcf8e-18e6-4161-befc-0f1d1bf8d928.jpg
+Thu, 28 Jan 2016 17:49:32 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 09:49:32 GMT
+/huochuanmei/hcmcrawler/news/20160128/fcea8b2a-d799-4aef-af11-8a6a334fbe4b.jpg
+Thu, 28 Jan 2016 17:49:33 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 09:49:33 GMT
+/huochuanmei/hcmcrawler/news/20160128/3421712a-fe8d-4a3b-9f1e-63d47d27a3d9.jpg
+Thu, 28 Jan 2016 18:11:51 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 10:11:51 GMT
+/huochuanmei/hcmcrawler/news/20160128/2da50a36-2556-448e-8c2e-50bcefa8f4ab.jpg
+Thu, 28 Jan 2016 18:11:52 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 10:11:52 GMT
+/huochuanmei/hcmcrawler/news/20160128/9084b4b0-7137-46df-a71c-88c90d456ca9.jpg
+Thu, 28 Jan 2016 18:11:52 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 10:11:52 GMT
+/huochuanmei/hcmcrawler/news/20160128/9cb19f01-036e-4f3a-8327-af0cd5f14fe9.jpg
+Thu, 28 Jan 2016 18:11:53 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 10:11:53 GMT
+/huochuanmei/hcmcrawler/news/20160128/8a50fb6b-eca5-4c8e-a41b-d85b2606369b.jpg
+Thu, 28 Jan 2016 18:11:54 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 10:11:54 GMT
+/huochuanmei/hcmcrawler/news/20160128/016c4d65-2dcc-4c2a-ab4e-d85782d46c52.jpg
+Thu, 28 Jan 2016 18:11:55 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 10:11:55 GMT
+/huochuanmei/hcmcrawler/news/20160128/813c3417-eab9-421d-9435-2bec81d39127.jpg
+Thu, 28 Jan 2016 18:11:56 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 10:11:56 GMT
+/huochuanmei/hcmcrawler/news/20160128/e690ea48-7369-4f99-8756-21bb6c3d0cb0.jpg
+Thu, 28 Jan 2016 18:11:57 sina_spider.py[line:105] DEBUG 
+Thu, 28 Jan 2016 18:11:58 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 10:11:58 GMT
+/huochuanmei/hcmcrawler/news/20160128/6515d4ba-420b-4703-9d36-6331afcc6d84.jpg
+Thu, 28 Jan 2016 18:11:58 sina_spider.py[line:105] DEBUG 
+Thu, 28 Jan 2016 18:12:10 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 10:12:10 GMT
+/huochuanmei/hcmcrawler/news/20160128/83e08b47-7020-4bfc-9297-f421b8b079f4.jpg
+Thu, 28 Jan 2016 18:12:10 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 10:12:10 GMT
+/huochuanmei/hcmcrawler/news/20160128/c091426d-6d32-4338-9d1a-9557eb211836.jpg
+Thu, 28 Jan 2016 18:12:10 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 10:12:10 GMT
+/huochuanmei/hcmcrawler/news/20160128/9f96423c-876d-4426-b409-2fe750ad5509.jpg
+Thu, 28 Jan 2016 18:12:11 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 10:12:11 GMT
+/huochuanmei/hcmcrawler/news/20160128/02bbc8b7-187e-485b-b59f-4a489a95e851.jpg
+Thu, 28 Jan 2016 18:12:11 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 10:12:11 GMT
+/huochuanmei/hcmcrawler/news/20160128/4dca6f73-0516-4407-93ee-4655f0346976.jpg
+Thu, 28 Jan 2016 18:12:12 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 10:12:12 GMT
+/huochuanmei/hcmcrawler/news/20160128/dfb8badf-00f1-4ffa-8cfa-ddfa04abac9d.jpg
+Thu, 28 Jan 2016 18:12:13 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 10:12:13 GMT
+/huochuanmei/hcmcrawler/news/20160128/20fd3024-005e-4df5-85d8-2e1ef6562ac0.jpg
+Thu, 28 Jan 2016 18:12:13 sina_spider.py[line:105] DEBUG 
+Thu, 28 Jan 2016 18:12:14 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 10:12:14 GMT
+/huochuanmei/hcmcrawler/news/20160128/24bf62a9-587e-467a-91a6-74161e5552f3.jpg
+Thu, 28 Jan 2016 18:12:14 sina_spider.py[line:105] DEBUG 
+Thu, 28 Jan 2016 18:12:15 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 10:12:15 GMT
+/huochuanmei/hcmcrawler/news/20160128/cb5db225-31b3-40fb-a86f-f74749ce87ad.jpg
+Thu, 28 Jan 2016 18:12:15 sina_spider.py[line:105] DEBUG 
+Thu, 28 Jan 2016 18:21:12 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 10:21:12 GMT
+/huochuanmei/hcmcrawler/news/20160128/516bdd49-432b-4474-8165-4129920f3817.jpg
+Thu, 28 Jan 2016 18:21:13 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 10:21:13 GMT
+/huochuanmei/hcmcrawler/news/20160128/a1fc4f61-8a33-496a-8f94-c4cd1a8dd042.jpg
+Thu, 28 Jan 2016 18:21:13 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 10:21:13 GMT
+/huochuanmei/hcmcrawler/news/20160128/f77c6f36-08b5-4996-8f72-9aa969970507.jpg
+Thu, 28 Jan 2016 18:21:13 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 10:21:13 GMT
+/huochuanmei/hcmcrawler/news/20160128/7cb1f6c6-4b1b-49ff-97da-50cea446bfa8.jpg
+Thu, 28 Jan 2016 18:21:14 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 10:21:14 GMT
+/huochuanmei/hcmcrawler/news/20160128/c7b1ac37-9d8c-4e70-83d7-261c18895b37.jpg
+Thu, 28 Jan 2016 18:21:15 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 10:21:15 GMT
+/huochuanmei/hcmcrawler/news/20160128/c48f865e-3ea5-4cea-9982-4f888fe9d9da.jpg
+Thu, 28 Jan 2016 18:21:16 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 10:21:16 GMT
+/huochuanmei/hcmcrawler/news/20160128/73f0b674-e3fd-4f0d-acce-7d778ddcf926.jpg
+Thu, 28 Jan 2016 18:21:16 sina_spider.py[line:105] DEBUG 
+Thu, 28 Jan 2016 18:21:17 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 10:21:17 GMT
+/huochuanmei/hcmcrawler/news/20160128/4efe29fe-bf26-448d-98bc-ac97bfb2f5d9.jpg
+Thu, 28 Jan 2016 18:21:17 sina_spider.py[line:105] DEBUG 
+Thu, 28 Jan 2016 18:21:18 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 10:21:18 GMT
+/huochuanmei/hcmcrawler/news/20160128/cdfb0c44-9cfb-4681-8132-01afcca2e24f.jpg
+Thu, 28 Jan 2016 18:21:18 sina_spider.py[line:105] DEBUG 
+Thu, 28 Jan 2016 18:22:36 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 10:22:36 GMT
+/huochuanmei/hcmcrawler/news/20160128/3ecc3027-d9c6-4dde-b0e6-f895d5142091.jpg
+Thu, 28 Jan 2016 18:22:36 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 10:22:36 GMT
+/huochuanmei/hcmcrawler/news/20160128/75649b65-1bf0-4b44-88b2-a6d5a450fd72.jpg
+Thu, 28 Jan 2016 18:22:37 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 10:22:37 GMT
+/huochuanmei/hcmcrawler/news/20160128/bc32ebe1-b46c-4c8f-b0eb-00911cdd47b9.jpg
+Thu, 28 Jan 2016 18:22:38 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 10:22:38 GMT
+/huochuanmei/hcmcrawler/news/20160128/5720e5c2-2ecb-4a7d-a080-7e4e0fcd2e4c.jpg
+Thu, 28 Jan 2016 18:22:38 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 10:22:38 GMT
+/huochuanmei/hcmcrawler/news/20160128/29ff195c-621f-469f-97d3-a7c198158491.jpg
+Thu, 28 Jan 2016 18:22:39 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 10:22:39 GMT
+/huochuanmei/hcmcrawler/news/20160128/8cb544b6-f112-44b7-a28e-cc8d8bd4818a.jpg
+Thu, 28 Jan 2016 18:22:40 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 10:22:40 GMT
+/huochuanmei/hcmcrawler/news/20160128/45b45832-3c83-4fb3-8e76-5e47b5fe1197.jpg
+Thu, 28 Jan 2016 18:22:41 sina_spider.py[line:105] DEBUG 
+Thu, 28 Jan 2016 18:22:42 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 10:22:42 GMT
+/huochuanmei/hcmcrawler/news/20160128/7d030251-222d-4df3-b645-3f8acbeb7a76.jpg
+Thu, 28 Jan 2016 18:22:42 sina_spider.py[line:105] DEBUG 
+Thu, 28 Jan 2016 18:22:42 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Thu, 28 Jan 2016 10:22:42 GMT
+/huochuanmei/hcmcrawler/news/20160128/044719e7-4351-4210-8a7a-71bf47fc10fb.jpg
+Thu, 28 Jan 2016 18:22:43 sina_spider.py[line:105] DEBUG 
+Fri, 29 Jan 2016 10:37:40 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Fri, 29 Jan 2016 02:37:40 GMT
+/huochuanmei/hcmcrawler/news/20160129/913c852b-c625-485d-9901-ca8339d1d601.jpg
+Fri, 29 Jan 2016 10:37:42 sina_spider.py[line:105] DEBUG 
+Fri, 29 Jan 2016 10:37:43 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Fri, 29 Jan 2016 02:37:43 GMT
+/huochuanmei/hcmcrawler/news/20160129/a150cef1-4991-4ea8-9101-5c8a961365b9.jpg
+Fri, 29 Jan 2016 10:37:43 sina_spider.py[line:105] DEBUG 
+Fri, 29 Jan 2016 10:37:46 sina_spider.py[line:105] DEBUG HTTPConnectionPool(host='feed.mix.sina.com.cn', port=80): Max retries exceeded with url: /api/roll/get?pageid=51&lid=740&num=30&versionNumber=1.2.8&page=2&encode=utf-8&callback=feedCardJsonpCallback (Caused by ConnectTimeoutError(<requests.packages.urllib3.connection.HTTPConnection object at 0x00000000032EB860>, 'Connection to feed.mix.sina.com.cn timed out. (connect timeout=3)'))
+Fri, 29 Jan 2016 10:37:49 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Fri, 29 Jan 2016 02:37:49 GMT
+/huochuanmei/hcmcrawler/news/20160129/04e5398a-b1bc-4915-8f06-4b7d49b191b9.jpg
+Fri, 29 Jan 2016 10:37:49 sina_spider.py[line:105] DEBUG 
+Fri, 29 Jan 2016 10:37:50 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Fri, 29 Jan 2016 02:37:50 GMT
+/huochuanmei/hcmcrawler/news/20160129/b3e242a8-afdf-4358-a458-8134294d2591.jpg
+Fri, 29 Jan 2016 10:37:51 sina_spider.py[line:105] DEBUG 
+Fri, 29 Jan 2016 10:37:53 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Fri, 29 Jan 2016 02:37:53 GMT
+/huochuanmei/hcmcrawler/news/20160129/0c36437f-e4d6-4559-ac51-d92b9ecb9c4d.jpg
+Fri, 29 Jan 2016 10:37:53 sina_spider.py[line:105] DEBUG 
+Fri, 29 Jan 2016 10:37:54 auth.py[line:49] DEBUG string_to_sign=PUT
+
+image/jpeg
+Fri, 29 Jan 2016 02:37:54 GMT
+/huochuanmei/hcmcrawler/news/20160129/8c1f01aa-969e-4970-8ea0-9f519770a0e8.jpg
+Fri, 29 Jan 2016 10:37:55 sina_spider.py[line:105] DEBUG 

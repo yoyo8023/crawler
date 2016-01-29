@@ -33,15 +33,17 @@ def insert_news_to_mysql(data_list):
     # 插入多条数据
     news_base_sql = "insert into news_base(TITLE, " \
                     "CONTENT_TXT, GROUP_PIC_MODE, PUBLIC_TIME, AUTHOR, FROM_SRC, TEMPLATE_TYPE, " \
-                    " IS_OUR, IS_SHOW, SORT_NO, CREATOR_ID, PRICE_ID, SUMMARY" \
-                    ") values ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')"
+                    " IS_OUR, IS_SHOW, SORT_NO, CREATOR_ID, PRICE_ID, SUMMARY, CREATE_TIME, LASTER_TIME" \
+                    ") values ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s'," \
+                    " '%s', '%s', '%s', '%s')"
 
     img_base_sql = "insert into img_base(BIZ_TYPE, " \
-                   "BIZ_RID, USE_TYPE, IMG_PATH, IMG_INDEX, IMG_TITLE" \
-                   ") values ('%s', '%s', '%s', '%s', '%s', '%s')"
+                   "BIZ_RID, USE_TYPE, IMG_PATH, IMG_INDEX, IMG_TITLE, STATUS" \
+                   ") values ('%s', '%s', '%s', '%s', '%s', '%s', '%s')"
     for data in data_list:
         artile = data['artile']
-        artile = artile.replace(u'搜狐娱乐讯','')
+        if not data['title'].strip():
+            continue
         tmp_tuple = (data['title'],
                      artile,
                      data['pic_mode'],
@@ -54,18 +56,20 @@ def insert_news_to_mysql(data_list):
                      0,
                      9,
                      1,
-                     u'')
+                     u'',
+                     datetime.now(),
+                     datetime.now(),)
         sql = news_base_sql % tmp_tuple
-        print sql
         cursor.execute(sql)
         news_last_id = cursor.lastrowid
         for index, img in enumerate(data['img_list']):
             img_tuple = (1,
                          news_last_id,
-                         1,
+                         0,
                          img[1],
                          index,
-                         img[0])
+                         img[0],
+                         1,)
             img_sql = img_base_sql % img_tuple
             cursor.execute(img_sql)
     db.commit()

@@ -14,6 +14,7 @@ from lib.source_html import get_tag_html
 
 import logging
 import logging.config
+
 print os.path.join('conf', "logging.conf")
 logging.config.fileConfig(os.path.join('conf', "logging.conf"))
 logger = logging.getLogger("example01")
@@ -57,8 +58,8 @@ class SouhuSpider(object):
             tmp_dict = dict()
             try:
                 r = requests.get(news, timeout=3)
-            except Exception, info:
-                logger.debug("Error '%s' happened on line %d" % (info[0], info[1][1]))
+            except Exception as e:
+                logger.debug(e.message)
                 continue
             news_body = r.text
             news_soup = BeautifulSoup(news_body)
@@ -66,22 +67,25 @@ class SouhuSpider(object):
                 print news
                 title = get_tag_html(news_soup, 'h1')
                 tmp_dict['title'] = title
-                # 获取文章内容
-                artile = ''
-                for a in news_soup.select("#contentText p"):
-                    for string in a.strings:
-                        if '_tvId' not in string:
-                            artile += '<p>' + string.strip() + '</p>'
-                tmp_dict['artile'] = artile
+
                 # 获取图片
                 img_list = list()
+                img_tag = '<div><img alt="{img_title}" src="{img_url}"><span>{img_title}</span></div>'
+                artile = ''
                 for img in news_soup.select("#contentText img"):
                     img_title = img['alt']
                     img_url = img['src']
                     # 上传图片到阿里云
                     status, msg, img_url = upload_img_to_oss2(img_url)
                     if status:
-                        img_list.append((img_title, img_url))
+                        img_list.append([img_title, img_url])
+                        artile += img_tag.format(img_url=img_url, img_title=img_title)
+                # 获取文章内容
+                for a in news_soup.select("#contentText p"):
+                    for string in a.strings:
+                        if '_tvId' not in string:
+                            artile += '<p>' + string.strip() + '</p>'
+                tmp_dict['artile'] = artile
                 tmp_dict['img_list'] = img_list
                 tmp_dict['pic_mode'] = 0
             else:
@@ -97,7 +101,7 @@ class SouhuSpider(object):
                     # 上传图片到阿里云
                     status, msg, img_url = upload_img_to_oss2(img_url)
                     if status:
-                        img_list.append((img_title, img_url))
+                        img_list.append([img_title, img_url])
                 tmp_dict['img_list'] = img_list
                 tmp_dict['pic_mode'] = 1
             tmp_dict['source'] = news
@@ -108,8 +112,8 @@ class SouhuSpider(object):
             new_url = url.format(page='')
             try:
                 content = requests.get(new_url, timeout=3).text
-            except Exception, info:
-                logger.debug("Error '%s' happened on line %d" % (info[0], info[1][1]))
+            except Exception as e:
+                logger.debug(e.message)
                 continue
             # 获取max page
             content_list = content.split('\n')
@@ -138,7 +142,7 @@ class SouhuSpider(object):
             try:
                 content = requests.get(url, timeout=3).text
             except Exception, info:
-                logger.debug("Error '%s' happened on line %d" % (info[0], info[1][1]))
+                logger.debug("Error '%s'" % info)
                 continue
             soup = BeautifulSoup(content)
             for data in soup.select("#item-list a"):
@@ -147,7 +151,7 @@ class SouhuSpider(object):
                 try:
                     news_body = requests.get(news_url, timeout=3).text
                 except Exception, info:
-                    logger.debug("Error '%s' happened on line %d" % (info[0], info[1][1]))
+                    logger.debug("Error '%s'" % info)
                     continue
                 news_soup = BeautifulSoup(news_body)
                 title = get_tag_html(news_soup, '#contentE h2')
@@ -168,7 +172,7 @@ class SouhuSpider(object):
                     # 上传图片到阿里云
                     status, msg, img_url = upload_img_to_oss2(img_url)
                     if status:
-                        img_list.append((img_title, img_url))
+                        img_list.append([img_title, img_url])
                 tmp_dict['img_list'] = img_list
                 tmp_dict['source'] = news_url
                 self.article_data_list.append(tmp_dict)
@@ -177,5 +181,5 @@ class SouhuSpider(object):
 
 
 if __name__ == '__main__':
-    souhu = SouhuSpider('2016-1-26 12:30:00')
+    souhu = SouhuSpider('2016-1-28 10:30:00')
     souhu.main()

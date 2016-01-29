@@ -65,22 +65,18 @@ class SinaSpider(object):
             tmp_dict['source'] = url
             try:
                 data_content = requests.get(url, timeout=3).text
-            except Exception, info:
-                logger.debug("Error '%s' happened on line %d" % (info[0], info[1][1]))
+            except Exception as e:
+                logger.debug(e.message)
                 continue
             soup = BeautifulSoup(data_content)
             title = get_tag_html(soup, '#main_title')
             tmp_dict['title'] = title.replace('\\', '')
             digest = get_tag_html(soup, '.ellipsis')
             tmp_dict['digest'] = digest
-            # 获取文章内容
-            artile = ''
-            for a in soup.select("[class~=content] p"):
-                for string in a.strings:
-                    artile += '<p>'+string.strip()+'</p>'
-            tmp_dict['artile'] = artile
             img_list = list()
             # 获取图片内容
+            img_tag = '<div><img alt="{img_title}" src="{img_url}"><span>{img_title}</span></div>'
+            artile = ''
             for img in soup.select("[class~=content] img"):
                 img_title = img['alt']
                 img_url = img['src']
@@ -88,6 +84,12 @@ class SinaSpider(object):
                 status, msg, img_url = upload_img_to_oss2(img_url)
                 if status:
                     img_list.append([img_title, img_url])
+                    artile += img_tag.format(img_url=img_url, img_title=img_title)
+            # 获取文章内容
+            for a in soup.select("[class~=content] p"):
+                for string in a.strings:
+                    artile += '<p>'+string.strip()+'</p>'
+            tmp_dict['artile'] = artile
             tmp_dict['img_list'] = img_list
             tmp_dict['pic_mode'] = 0
             self.article_data_list.append(tmp_dict)
@@ -99,8 +101,8 @@ class SinaSpider(object):
             while self.flag != 1:
                 try:
                     self.sina(url.format(page=page))
-                except Exception, info:
-                    logger.debug("Error '%s' happened on line %d" % (info[0], info[1][1]))
+                except Exception as e:
+                    logger.debug(e.message)
                 page += 1
             self.flag = 0
         data = sina_change_char(self.article_data_list)
@@ -108,5 +110,5 @@ class SinaSpider(object):
 
 
 if __name__ == '__main__':
-    s = SinaSpider('2016-1-27 00:00:00')
+    s = SinaSpider('2016-1-28 12:00:00')
     s.main()

@@ -51,12 +51,7 @@ class IFengSpider(object):
             news_detail_list.append(data.a['href'])
         for news in news_detail_list:
             tmp_dict = dict()
-            try:
-                news_body = requests.get(news, timeout=3).text
-            except Exception, info:
-                logger.info("news_url %s" % news)
-                logger.debug("Error '%s' happened on line %d" % (info[0], info[1][1]))
-                continue
+            news_body = requests.get(news, timeout=3).text
             news_soup = BeautifulSoup(news_body)
             title = get_tag_html(news_soup, 'h1')
             tmp_dict['title'] = title
@@ -99,12 +94,7 @@ class IFengSpider(object):
             news_detail_list.append(data.p.a['href'])
         for news in news_detail_list:
             tmp_dict = dict()
-            try:
-                news_body = requests.get(news, timeout=3).text
-            except Exception, info:
-                logger.info("news_url %s" % news)
-                logger.debug("Error '%s' happened on line %d" % (info[0], info[1][1]))
-                continue
+            news_body = requests.get(news, timeout=3).text
             news_soup = BeautifulSoup(news_body)
             title = get_tag_html(news_soup, 'h1')
             tmp_dict['title'] = title
@@ -141,12 +131,7 @@ class IFengSpider(object):
             page = 1
             while self.flag != 1:
                 news_url = url.format(page=page)
-                try:
-                    self.detail_spider(news_url)
-                except Exception, info:
-                    logger.info("news_url %s" % news_url)
-                    logger.info("news_url %s" % news_url)
-                    logger.debug("Error '%s'" % info)
+                self.detail_spider(news_url)
                 page += 1
             self.flag = 0
         insert_news_to_mysql(self.article_data_list)
@@ -156,10 +141,7 @@ class IFengSpider(object):
             page = 1
             while self.flag != 1:
                 news_url = url.format(page=page)
-                try:
-                    self.pic_detail_spider(news_url)
-                except Exception, info:
-                    logger.debug("Error '%s'" % info)
+                self.pic_detail_spider(news_url)
                 page += 1
             self.flag = 0
         insert_news_to_mysql(self.article_data_list)

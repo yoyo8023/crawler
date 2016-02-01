@@ -57,11 +57,7 @@ class SouhuSpider(object):
                 news_detail_list.append(data.a['href'])
         for news in news_detail_list:
             tmp_dict = dict()
-            try:
-                r = requests.get(news, timeout=3)
-            except Exception as e:
-                logger.debug(e.message)
-                continue
+            r = requests.get(news, timeout=3)
             news_body = r.text
             news_body = char_change_gbk(news_body)
             news_soup = BeautifulSoup(news_body)
@@ -112,12 +108,8 @@ class SouhuSpider(object):
     def main(self):
         for url in self.url_list:
             new_url = url.format(page='')
-            try:
-                content = requests.get(new_url, timeout=3).text
-                content = char_change_gbk(content)
-            except Exception as e:
-                logger.debug(e.message)
-                continue
+            content = requests.get(new_url, timeout=3).text
+            content = char_change_gbk(content)
             # 获取max page
             content_list = content.split('\n')
             max_page = 0
@@ -130,33 +122,22 @@ class SouhuSpider(object):
             while self.flag != 1 and max_page != 0:
                 max_page_str = '_' + str(max_page)
                 print url.format(page=max_page_str)
-                try:
-                    self.detail_spider(url.format(page=max_page_str))
-                except Exception, info:
-                    logger.debug("Error '%s'" % info)
-                    traceback.print_exc()
+                self.detail_spider(url.format(page=max_page_str))
                 max_page -= 1
             self.flag = 0
+        print self.article_data_list
         insert_news_to_mysql(self.article_data_list)
 
     def pic_main(self):
         for url in self.pic_url_list:
-            try:
-                content = requests.get(url, timeout=3).text
-                content = char_change_gbk(content)
-            except Exception, info:
-                logger.debug("Error '%s'" % info)
-                continue
+            content = requests.get(url, timeout=3).text
+            content = char_change_gbk(content)
             soup = BeautifulSoup(content)
             for data in soup.select("#item-list a"):
                 tmp_dict = dict()
                 news_url = data['href']
-                try:
-                    news_body = requests.get(news_url, timeout=3).text
-                    news_body = char_change_gbk(news_body)
-                except Exception, info:
-                    logger.debug("Error '%s'" % info)
-                    continue
+                news_body = requests.get(news_url, timeout=3).text
+                news_body = char_change_gbk(news_body)
                 news_soup = BeautifulSoup(news_body)
                 title = get_tag_html(news_soup, '#contentE h2')
                 pub_time = get_tag_html(news_soup, '[class~=timt]')
@@ -184,5 +165,5 @@ class SouhuSpider(object):
 
 
 if __name__ == '__main__':
-    souhu = SouhuSpider('2016-1-28 10:30:00')
+    souhu = SouhuSpider('2016-1-29 11:30:00')
     souhu.main()

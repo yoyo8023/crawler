@@ -63,12 +63,8 @@ class SinaSpider(object):
                 break
             tmp_dict['ctime'] = ctime
             tmp_dict['source'] = url
-            try:
-                data_content = requests.get(url, timeout=3).text
-                data_content = char_change_utf8(data_content)
-            except Exception as e:
-                logger.debug(e.message)
-                continue
+            data_content = requests.get(url, timeout=3).text
+            data_content = char_change_utf8(data_content)
             soup = BeautifulSoup(data_content)
             title = get_tag_html(soup, '#main_title')
             tmp_dict['title'] = title.replace('\\', '')
@@ -102,10 +98,7 @@ class SinaSpider(object):
             page = 1
             print url
             while self.flag != 1:
-                try:
-                    self.sina(url.format(page=page))
-                except Exception as e:
-                    logger.debug(e.message)
+                self.sina(url.format(page=page))
                 page += 1
             self.flag = 0
         insert_news_to_mysql(self.article_data_list)

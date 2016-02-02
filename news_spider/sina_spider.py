@@ -44,12 +44,16 @@ class SinaSpider(object):
             'http://pic.yule.sohu.com/cate-911401.shtml'
         ]
 
+    def get_content(self, url):
+        data_content = requests.get(url, timeout=3).text
+        return char_change_utf8(data_content)
+
     def sina(self, url):
         """
         新浪微博数据抓取
         :param url: 抓取数据的url
         """
-        content = requests.get(url, timeout=3).text
+        content = self.get_content(url)
         content = content.replace('try{feedCardJsonpCallback(', '')
         content = content.replace(');}catch(e){};', '')
         content_dict = eval(content)
@@ -63,8 +67,11 @@ class SinaSpider(object):
                 break
             tmp_dict['ctime'] = ctime
             tmp_dict['source'] = url
-            data_content = requests.get(url, timeout=3).text
-            data_content = char_change_utf8(data_content)
+            try:
+                data_content = self.get_content(url)
+            except Exception as e:
+                print e
+                continue
             soup = BeautifulSoup(data_content)
             title = get_tag_html(soup, '#main_title')
             tmp_dict['title'] = title.replace('\\', '')
@@ -72,8 +79,8 @@ class SinaSpider(object):
             tmp_dict['digest'] = digest
             img_list = list()
             # 获取图片内容
-            img_tag = '<div><img alt="{img_title}" src="{img_url}"><span>{img_title}</span></div>'
-            artile = ''
+            img_tag = u'<div><img alt="{img_title}" src="{img_url}"><span>{img_title}</span></div>'
+            artile = u''
             for img in soup.select("[class~=content] img"):
                 img_title = img['alt']
                 img_url = img['src']
@@ -85,7 +92,7 @@ class SinaSpider(object):
             # 获取文章内容
             for a in soup.select("[class~=content] p"):
                 for string in a.strings:
-                    artile += '<p>'+string.strip()+'</p>'
+                    artile += u'<p>'+string.strip()+u'</p>'
             artile = artile.replace(u'新浪娱乐讯 ', '')
             artile = artile.replace(u'<p>[微博]</p>', '')
             tmp_dict['artile'] = artile
@@ -96,9 +103,12 @@ class SinaSpider(object):
     def main(self):
         for url in self.url_list:
             page = 1
-            print url
             while self.flag != 1:
-                self.sina(url.format(page=page))
+                try:
+                    self.sina(url.format(page=page))
+                except Exception as e:
+                    print e
+                    continue
                 page += 1
             self.flag = 0
         insert_news_to_mysql(self.article_data_list)

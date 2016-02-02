@@ -41,9 +41,12 @@ class SouhuSpider(object):
             'http://pic.yule.sohu.com/cate-911401.shtml'
         ]
 
+    def get_content(self, url):
+        data_content = requests.get(url, timeout=3).text
+        return char_change_gbk(data_content)
+
     def detail_spider(self, url):
-        content = requests.get(url, timeout=3).text
-        content = char_change_gbk(content)
+        content = self.get_content(url)
         soup = BeautifulSoup(content)
         news_detail_list = list()
         now_year = str(datetime.now().year)
@@ -57,9 +60,11 @@ class SouhuSpider(object):
                 news_detail_list.append(data.a['href'])
         for news in news_detail_list:
             tmp_dict = dict()
-            r = requests.get(news, timeout=3)
-            news_body = r.text
-            news_body = char_change_gbk(news_body)
+            try:
+                news_body = self.get_content(news)
+            except Exception as e:
+                print e
+                continue
             news_soup = BeautifulSoup(news_body)
             if 'pic' not in news:
                 print news
@@ -67,7 +72,7 @@ class SouhuSpider(object):
                 tmp_dict['title'] = title
                 # 获取图片
                 img_list = list()
-                img_tag = '<div><img alt="{img_title}" src="{img_url}"><span>{img_title}</span></div>'
+                img_tag = u'<div><img alt="{img_title}" src="{img_url}"><span>{img_title}</span></div>'
                 artile = ''
                 for img in news_soup.select("#contentText img"):
                     img_title = img['alt']
@@ -81,7 +86,7 @@ class SouhuSpider(object):
                 for a in news_soup.select("#contentText p"):
                     for string in a.strings:
                         if '_tvId' not in string:
-                            artile += '<p>' + string.strip() + '</p>'
+                            artile += u'<p>' + string.strip() + u'</p>'
                 artile = artile.replace(u'搜狐娱乐讯 ', '')
                 tmp_dict['artile'] = artile
                 tmp_dict['img_list'] = img_list
@@ -108,8 +113,11 @@ class SouhuSpider(object):
     def main(self):
         for url in self.url_list:
             new_url = url.format(page='')
-            content = requests.get(new_url, timeout=3).text
-            content = char_change_gbk(content)
+            try:
+                content = self.get_content(new_url)
+            except Exception as e:
+                print e
+                continue
             # 获取max page
             content_list = content.split('\n')
             max_page = 0
@@ -118,11 +126,19 @@ class SouhuSpider(object):
                     start_index = c.find('=') + 1
                     max_page = int(c[start_index: -1].strip()) - 1
                     break
-            self.detail_spider(url)
+            try:
+                self.detail_spider(url)
+            except Exception as e:
+                print e
+                continue
             while self.flag != 1 and max_page != 0:
                 max_page_str = '_' + str(max_page)
                 print url.format(page=max_page_str)
-                self.detail_spider(url.format(page=max_page_str))
+                try:
+                    self.detail_spider(url.format(page=max_page_str))
+                except Exception as e:
+                    print e
+                    continue
                 max_page -= 1
             self.flag = 0
         print self.article_data_list
@@ -130,14 +146,20 @@ class SouhuSpider(object):
 
     def pic_main(self):
         for url in self.pic_url_list:
-            content = requests.get(url, timeout=3).text
-            content = char_change_gbk(content)
+            try:
+                content = self.get_content(url)
+            except Exception as e:
+                print e
+                continue
             soup = BeautifulSoup(content)
             for data in soup.select("#item-list a"):
                 tmp_dict = dict()
                 news_url = data['href']
-                news_body = requests.get(news_url, timeout=3).text
-                news_body = char_change_gbk(news_body)
+                try:
+                    news_body = self.get_content(news_url)
+                except Exception as e:
+                    print e
+                    continue
                 news_soup = BeautifulSoup(news_body)
                 title = get_tag_html(news_soup, '#contentE h2')
                 pub_time = get_tag_html(news_soup, '[class~=timt]')

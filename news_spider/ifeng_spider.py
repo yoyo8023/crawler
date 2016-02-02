@@ -39,8 +39,11 @@ class IFengSpider(object):
             'http://ent.ifeng.com/listpage/39788/{page}/list.shtml'
         ]
 
+    def get_content(self, url):
+        return requests.get(url, timeout=3).text
+
     def detail_spider(self, url):
-        content = requests.get(url, timeout=3).text
+        content = self.get_content(url)
         soup = BeautifulSoup(content)
         news_detail_list = list()
         for data in soup.select(".box_txt"):
@@ -51,7 +54,11 @@ class IFengSpider(object):
             news_detail_list.append(data.a['href'])
         for news in news_detail_list:
             tmp_dict = dict()
-            news_body = requests.get(news, timeout=3).text
+            try:
+                news_body = self.get_content(news)
+            except Exception as e:
+                print e
+                continue
             news_soup = BeautifulSoup(news_body)
             title = get_tag_html(news_soup, 'h1')
             tmp_dict['title'] = title
@@ -59,7 +66,7 @@ class IFengSpider(object):
             artile = ''
             # 获取图片
             img_list = list()
-            img_tag = '<div><img alt="{img_title}" src="{img_url}"><span>{img_title}</span></div>'
+            img_tag = u'<div><img alt="{img_title}" src="{img_url}"><span>{img_title}</span></div>'
             for data in news_soup.select("#main_content"):
                 img_title = data.span.string
                 img_url = data.p.img['src']
@@ -70,7 +77,7 @@ class IFengSpider(object):
                     artile += img_tag.format(img_url=img_url, img_title=img_title)
             for a in news_soup.select("#main_content p"):
                 for string in a.strings:
-                    artile += '<p>'+string.strip()+'</p>'
+                    artile += u'<p>' + string.strip() + u'</p>'
             tmp_dict['artile'] = artile
             tmp_dict['img_list'] = img_list
             tmp_dict['source'] = news
@@ -78,7 +85,7 @@ class IFengSpider(object):
             self.article_data_list.append(tmp_dict)
 
     def pic_detail_spider(self, url):
-        content = requests.get(url, timeout=3).text
+        content = self.get_content(url)
         soup = BeautifulSoup(content)
         news_detail_list = list()
         now_year = str(datetime.now().year)
@@ -94,7 +101,11 @@ class IFengSpider(object):
             news_detail_list.append(data.p.a['href'])
         for news in news_detail_list:
             tmp_dict = dict()
-            news_body = requests.get(news, timeout=3).text
+            try:
+                news_body = self.get_content(news)
+            except Exception as e:
+                print e
+                continue
             news_soup = BeautifulSoup(news_body)
             title = get_tag_html(news_soup, 'h1')
             tmp_dict['title'] = title
@@ -102,7 +113,7 @@ class IFengSpider(object):
             content_list = news_body.split('\n')
             artile_list = list()
             img_list = list()
-            img_tag = '<div><img alt="{img_title}" src="{img_url}"><span>{img_title}</span></div>'
+            img_tag = u'<div><img alt="{img_title}" src="{img_url}"><span>{img_title}</span></div>'
             artile = ''
             for em in content_list:
                 if '{title:' in em:
@@ -131,7 +142,11 @@ class IFengSpider(object):
             page = 1
             while self.flag != 1:
                 news_url = url.format(page=page)
-                self.detail_spider(news_url)
+                try:
+                    self.detail_spider(news_url)
+                except Exception as e:
+                    print e
+                    continue
                 page += 1
             self.flag = 0
         insert_news_to_mysql(self.article_data_list)
@@ -141,7 +156,11 @@ class IFengSpider(object):
             page = 1
             while self.flag != 1:
                 news_url = url.format(page=page)
-                self.pic_detail_spider(news_url)
+                try:
+                    self.pic_detail_spider(news_url)
+                except Exception as e:
+                    print e
+                    continue
                 page += 1
             self.flag = 0
         insert_news_to_mysql(self.article_data_list)

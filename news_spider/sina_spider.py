@@ -4,6 +4,7 @@ import re
 import requests
 from bs4 import BeautifulSoup
 
+from conf.settings import LOG_DIR
 from lib.char_change import char_change_utf8
 from lib.date_transform import string_transform_timestamp
 from lib.mysql_api import insert_news_to_mysql
@@ -14,7 +15,7 @@ import logging.config
 
 from lib.source_html import get_tag_html
 
-logging.config.fileConfig(os.path.join('conf', "logging.conf"))
+logging.config.fileConfig(LOG_DIR)
 logger = logging.getLogger("example01")
 
 
@@ -115,5 +116,5 @@ class SinaSpider(object):
 
 
 if __name__ == '__main__':
-    s = SinaSpider('2016-1-29 12:00:00')
+    s = SinaSpider('2016-2-5 12:00:00')
     s.main()

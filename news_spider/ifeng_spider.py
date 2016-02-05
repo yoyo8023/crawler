@@ -1,9 +1,13 @@
 # coding:utf8
 import os
+import traceback
 from datetime import datetime
 
 import requests
 from bs4 import BeautifulSoup
+
+from conf.settings import LOG_DIR
+from lib.char_change import char_change_gbk, char_change_utf8
 from lib.date_transform import string_transform_timestamp
 from lib.mysql_api import insert_news_to_mysql
 from lib.oss_api import upload_img_to_oss2
@@ -11,8 +15,9 @@ from lib.source_html import get_tag_html
 
 import logging
 import logging.config
-
-logging.config.fileConfig(os.path.join(os.path.abspath('.'), 'conf', "logging.conf"))
+import sys
+print sys.path
+logging.config.fileConfig(LOG_DIR)
 logger = logging.getLogger("example01")
 
 
@@ -40,7 +45,15 @@ class IFengSpider(object):
         ]
 
     def get_content(self, url):
-        return requests.get(url, timeout=3).text
+        headers = {"Accept": "text/html,application/xhtml+xml,application/xml;",
+                   "Accept-Encoding": "gzip",
+                   "Accept-Language": "zh-CN,zh;q=0.8",
+                   "Referer": "http://ent.ifeng.com/",
+                   "User-Agent": "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 "
+                                 "(KHTML, like Gecko) Chrome/42.0.2311.90 Safari/537.36"
+                   }
+        data_content = requests.get(url, timeout=3, headers=headers).text
+        return char_change_utf8(data_content)
 
     def detail_spider(self, url):
         content = self.get_content(url)
@@ -57,7 +70,7 @@ class IFengSpider(object):
             try:
                 news_body = self.get_content(news)
             except Exception as e:
-                print e
+                print traceback.format_exc()
                 continue
             news_soup = BeautifulSoup(news_body)
             title = get_tag_html(news_soup, 'h1')
@@ -67,9 +80,14 @@ class IFengSpider(object):
             # 获取图片
             img_list = list()
             img_tag = u'<div><img alt="{img_title}" src="{img_url}"><span>{img_title}</span></div>'
+            print news
             for data in news_soup.select("#main_content"):
-                img_title = data.span.string
-                img_url = data.p.img['src']
+                img_title = data.span.string if data.span.string else ''
+                try:
+                    img_url = data.p.img['src']
+                except Exception as e:
+                    print traceback.format_exc()
+                    continue
                 # 上传图片到阿里云
                 status, msg, img_url = upload_img_to_oss2(img_url)
                 if status:
@@ -104,7 +122,7 @@ class IFengSpider(object):
             try:
                 news_body = self.get_content(news)
             except Exception as e:
-                print e
+                print traceback.format_exc()
                 continue
             news_soup = BeautifulSoup(news_body)
             title = get_tag_html(news_soup, 'h1')
@@ -145,8 +163,9 @@ class IFengSpider(object):
                 try:
                     self.detail_spider(news_url)
                 except Exception as e:
-                    print e
+                    print traceback.format_exc()
                     continue
+                print 'run'
                 page += 1
             self.flag = 0
         insert_news_to_mysql(self.article_data_list)
@@ -160,6 +179,7 @@ class IFengSpider(object):
                     self.pic_detail_spider(news_url)
                 except Exception as e:
                     print e
+                    print traceback.format_exc()
                     continue
                 page += 1
             self.flag = 0
@@ -167,5 +187,5 @@ class IFengSpider(object):
 
 
 if __name__ == '__main__':
-    souhu = IFengSpider('2016-1-29 12:00:00')
+    souhu = IFengSpider('2016-2-05 10:00:00')
     souhu.main()

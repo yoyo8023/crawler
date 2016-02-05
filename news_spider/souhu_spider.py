@@ -6,6 +6,7 @@ from datetime import datetime
 import requests
 from bs4 import BeautifulSoup
 
+from conf.settings import LOG_DIR
 from lib.char_change import char_change_gbk
 from lib.date_transform import string_transform_timestamp
 from lib.mysql_api import insert_news_to_mysql
@@ -15,8 +16,7 @@ from lib.source_html import get_tag_html
 import logging
 import logging.config
 
-print os.path.join('conf', "logging.conf")
-logging.config.fileConfig(os.path.join('conf', "logging.conf"))
+logging.config.fileConfig(LOG_DIR)
 logger = logging.getLogger("example01")
 
 

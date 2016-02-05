@@ -1,5 +1,10 @@
 # coding:utf8
 
 import sys
+import chardet
 
-print ['èƒ¡å†›æˆå†…å¤–å°æƒ…äººé½èš åº·åº·å†’é›ªæŽ¢ç­è€çˆ¸åšåŠ©ç†']
+rawdata = 'Wahaha\xef\xbc\x88\xe4\xb8\xa4\xe6\x98\x9f\xe6\x9c\x9f\xe8\xbf\x87\xe5\xbe\x97\xe5\xbe\x88\xe5\xbf\xab'
+
+print chardet.detect(rawdata)
+
+print rawdata.decode('utf8', 'ignore')

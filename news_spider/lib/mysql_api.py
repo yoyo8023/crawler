@@ -1,18 +1,10 @@
 # coding:utf8
-import os
 import sys
 from datetime import datetime
 
 import MySQLdb
 
 from conf import settings
-
-
-import logging
-import logging.config
-
-logging.config.fileConfig(os.path.join('conf', "logging.conf"))
-logger = logging.getLogger("example01")
 
 
 def insert_news_to_mysql(data_list):
@@ -26,7 +18,6 @@ def insert_news_to_mysql(data_list):
                 charset='utf8',
         )
     except Exception, info:
-        logger.debug("Error '%s' happened on line %d" % (info[0], info[1][1]))
         sys.exit()
 
     cursor = db.cursor()

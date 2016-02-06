@@ -12,13 +12,24 @@ from lib.date_transform import string_transform_timestamp
 from lib.mysql_api import insert_news_to_mysql
 from lib.oss_api import upload_img_to_oss2
 from lib.source_html import get_tag_html
+import logging
 
 import logging
-import logging.config
-import sys
-print sys.path
-logging.config.fileConfig(LOG_DIR)
-logger = logging.getLogger("example01")
+logger = logging.getLogger("simple_example")
+logger.setLevel(logging.DEBUG)
+# create file handler which logs even debug messages
+fh = logging.FileHandler(LOG_DIR + 'ifeng.log')
+fh.setLevel(logging.DEBUG)
+# create console handler with a higher log level
+ch = logging.StreamHandler()
+ch.setLevel(logging.ERROR)
+# create formatter and add it to the handlers
+formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
+ch.setFormatter(formatter)
+fh.setFormatter(formatter)
+# add the handlers to logger
+logger.addHandler(ch)
+logger.addHandler(fh)
 
 
 class IFengSpider(object):
@@ -53,7 +64,9 @@ class IFengSpider(object):
                                  "(KHTML, like Gecko) Chrome/42.0.2311.90 Safari/537.36"
                    }
         data_content = requests.get(url, timeout=3, headers=headers).text
-        return char_change_utf8(data_content)
+        if data_content.decode('utf8', 'ignore')['encoding'] == 'utf8':
+            return char_change_utf8(data_content)
+        return data_content
 
     def detail_spider(self, url):
         content = self.get_content(url)
@@ -71,6 +84,7 @@ class IFengSpider(object):
                 news_body = self.get_content(news)
             except Exception as e:
                 print traceback.format_exc()
+                logger.debug(traceback.format_exc())
                 continue
             news_soup = BeautifulSoup(news_body)
             title = get_tag_html(news_soup, 'h1')
@@ -87,6 +101,7 @@ class IFengSpider(object):
                     img_url = data.p.img['src']
                 except Exception as e:
                     print traceback.format_exc()
+                    logger.debug(traceback.format_exc())
                     continue
                 # 上传图片到阿里云
                 status, msg, img_url = upload_img_to_oss2(img_url)
@@ -123,6 +138,7 @@ class IFengSpider(object):
                 news_body = self.get_content(news)
             except Exception as e:
                 print traceback.format_exc()
+                logger.debug(traceback.format_exc())
                 continue
             news_soup = BeautifulSoup(news_body)
             title = get_tag_html(news_soup, 'h1')
@@ -164,6 +180,7 @@ class IFengSpider(object):
                     self.detail_spider(news_url)
                 except Exception as e:
                     print traceback.format_exc()
+                    logger.debug(traceback.format_exc())
                     continue
                 print 'run'
                 page += 1
@@ -178,7 +195,7 @@ class IFengSpider(object):
                 try:
                     self.pic_detail_spider(news_url)
                 except Exception as e:
-                    print e
+                    logger.debug(traceback.format_exc())
                     print traceback.format_exc()
                     continue
                 page += 1

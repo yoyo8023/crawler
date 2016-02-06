@@ -14,10 +14,21 @@ from lib.oss_api import upload_img_to_oss2
 from lib.source_html import get_tag_html
 
 import logging
-import logging.config
-
-logging.config.fileConfig(LOG_DIR)
-logger = logging.getLogger("example01")
+logger = logging.getLogger("simple_example")
+logger.setLevel(logging.DEBUG)
+# create file handler which logs even debug messages
+fh = logging.FileHandler(LOG_DIR + 'souhu.log')
+fh.setLevel(logging.DEBUG)
+# create console handler with a higher log level
+ch = logging.StreamHandler()
+ch.setLevel(logging.ERROR)
+# create formatter and add it to the handlers
+formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
+ch.setFormatter(formatter)
+fh.setFormatter(formatter)
+# add the handlers to logger
+logger.addHandler(ch)
+logger.addHandler(fh)
 
 
 class SouhuSpider(object):
@@ -63,7 +74,7 @@ class SouhuSpider(object):
             try:
                 news_body = self.get_content(news)
             except Exception as e:
-                print e
+                logger.debug(traceback.format_exc())
                 continue
             news_soup = BeautifulSoup(news_body)
             if 'pic' not in news:
@@ -116,7 +127,7 @@ class SouhuSpider(object):
             try:
                 content = self.get_content(new_url)
             except Exception as e:
-                print e
+                logger.debug(traceback.format_exc())
                 continue
             # 获取max page
             content_list = content.split('\n')
@@ -129,7 +140,7 @@ class SouhuSpider(object):
             try:
                 self.detail_spider(url)
             except Exception as e:
-                print e
+                logger.debug(traceback.format_exc())
                 continue
             while self.flag != 1 and max_page != 0:
                 max_page_str = '_' + str(max_page)
@@ -137,7 +148,7 @@ class SouhuSpider(object):
                 try:
                     self.detail_spider(url.format(page=max_page_str))
                 except Exception as e:
-                    print e
+                    logger.debug(traceback.format_exc())
                     continue
                 max_page -= 1
             self.flag = 0
@@ -149,7 +160,7 @@ class SouhuSpider(object):
             try:
                 content = self.get_content(url)
             except Exception as e:
-                print e
+                logger.debug(traceback.format_exc())
                 continue
             soup = BeautifulSoup(content)
             for data in soup.select("#item-list a"):
@@ -158,7 +169,7 @@ class SouhuSpider(object):
                 try:
                     news_body = self.get_content(news_url)
                 except Exception as e:
-                    print e
+                    logger.debug(traceback.format_exc())
                     continue
                 news_soup = BeautifulSoup(news_body)
                 title = get_tag_html(news_soup, '#contentE h2')

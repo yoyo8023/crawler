@@ -1,6 +1,8 @@
 # coding:utf8
 import os
 import re
+import traceback
+
 import requests
 from bs4 import BeautifulSoup
 
@@ -10,13 +12,24 @@ from lib.date_transform import string_transform_timestamp
 from lib.mysql_api import insert_news_to_mysql
 from lib.oss_api import upload_img_to_oss2
 
-import logging
-import logging.config
-
 from lib.source_html import get_tag_html
 
-logging.config.fileConfig(LOG_DIR)
-logger = logging.getLogger("example01")
+import logging
+logger = logging.getLogger("simple_example")
+logger.setLevel(logging.DEBUG)
+# create file handler which logs even debug messages
+fh = logging.FileHandler(LOG_DIR + 'sina.log')
+fh.setLevel(logging.DEBUG)
+# create console handler with a higher log level
+ch = logging.StreamHandler()
+ch.setLevel(logging.ERROR)
+# create formatter and add it to the handlers
+formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
+ch.setFormatter(formatter)
+fh.setFormatter(formatter)
+# add the handlers to logger
+logger.addHandler(ch)
+logger.addHandler(fh)
 
 
 class SinaSpider(object):
@@ -71,7 +84,7 @@ class SinaSpider(object):
             try:
                 data_content = self.get_content(url)
             except Exception as e:
-                print e
+                logger.debug(traceback.format_exc())
                 continue
             soup = BeautifulSoup(data_content)
             title = get_tag_html(soup, '#main_title')
@@ -108,7 +121,7 @@ class SinaSpider(object):
                 try:
                     self.sina(url.format(page=page))
                 except Exception as e:
-                    print e
+                    logger.debug(traceback.format_exc())
                     continue
                 page += 1
             self.flag = 0

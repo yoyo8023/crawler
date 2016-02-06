@@ -29,7 +29,7 @@ logger.addHandler(fh)
 
 if __name__ == '__main__':
     now_time = datetime.now()
-    now_time += timedelta(hours=-5)
+    now_time += timedelta(hours=-10)
     now_time_str = now_time.strftime("%Y-%m-%d %H:%M:%S")
     print now_time_str
     if sys.argv[1] == 'sina':

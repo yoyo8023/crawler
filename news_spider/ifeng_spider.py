@@ -3,6 +3,7 @@ import os
 import traceback
 from datetime import datetime
 
+import chardet
 import requests
 from bs4 import BeautifulSoup
 
@@ -64,8 +65,9 @@ class IFengSpider(object):
                                  "(KHTML, like Gecko) Chrome/42.0.2311.90 Safari/537.36"
                    }
         data_content = requests.get(url, timeout=3, headers=headers).text
-        if data_content.decode('utf8', 'ignore')['encoding'] == 'utf8':
+        if chardet.detect(data_content.encode('unicode-escape'))['encoding'] != 'unicode':
             return char_change_utf8(data_content)
+        print [data_content]
         return data_content
 
     def detail_spider(self, url):
@@ -204,5 +206,5 @@ class IFengSpider(object):
 
 
 if __name__ == '__main__':
-    souhu = IFengSpider('2016-2-05 10:00:00')
+    souhu = IFengSpider('2016-2-06 10:00:00')
     souhu.main()

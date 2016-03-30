@@ -7,7 +7,7 @@ import requests
 from bs4 import BeautifulSoup
 
 from conf.settings import LOG_DIR
-from lib.char_change import char_change_utf8
+from lib.char_change import char_change_utf8, sina_char_change_utf8
 from lib.date_transform import string_transform_timestamp
 from lib.mysql_api import insert_news_to_mysql
 from lib.oss_api import upload_img_to_oss2
@@ -60,13 +60,14 @@ class SinaSpider(object):
 
     def get_content(self, url):
         data_content = requests.get(url, timeout=3).text
-        return char_change_utf8(data_content)
+        return sina_char_change_utf8(data_content)
 
     def sina(self, url):
         """
         新浪微博数据抓取
         :param url: 抓取数据的url
         """
+        print url
         content = self.get_content(url)
         content = content.replace('try{feedCardJsonpCallback(', '')
         content = content.replace(');}catch(e){};', '')
@@ -84,6 +85,7 @@ class SinaSpider(object):
             try:
                 data_content = self.get_content(url)
             except Exception as e:
+                print traceback.format_exc()
                 logger.debug(traceback.format_exc())
                 continue
             soup = BeautifulSoup(data_content)
@@ -122,12 +124,14 @@ class SinaSpider(object):
                     self.sina(url.format(page=page))
                 except Exception as e:
                     logger.debug(traceback.format_exc())
-                    continue
+                    print traceback.format_exc()
                 page += 1
+                if page >= 2:
+                    break
             self.flag = 0
         insert_news_to_mysql(self.article_data_list)
 
 
 if __name__ == '__main__':
-    s = SinaSpider('2016-2-5 12:00:00')
+    s = SinaSpider('2016-2-17 12:00:00')
     s.main()

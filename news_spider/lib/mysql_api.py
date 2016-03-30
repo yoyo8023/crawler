@@ -1,5 +1,6 @@
 # coding:utf8
 import sys
+import traceback
 from datetime import datetime
 
 import MySQLdb
@@ -51,7 +52,11 @@ def insert_news_to_mysql(data_list):
                      datetime.now(),
                      datetime.now(),)
         sql = news_base_sql % tmp_tuple
-        cursor.execute(sql)
+        try:
+            cursor.execute(sql)
+        except Exception as e:
+            print traceback.format_exc()
+            continue
         news_last_id = cursor.lastrowid
         for index, img in enumerate(data['img_list']):
             img_tuple = (1,
@@ -62,7 +67,11 @@ def insert_news_to_mysql(data_list):
                          img[0],
                          1,)
             img_sql = img_base_sql % img_tuple
-            cursor.execute(img_sql)
+            try:
+                cursor.execute(img_sql)
+            except Exception as e:
+                print traceback.format_exc()
+                continue
     db.commit()
     db.close()
 

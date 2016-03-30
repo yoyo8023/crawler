@@ -1,5 +1,4 @@
 # coding:utf8
-import os
 import traceback
 from datetime import datetime
 
@@ -13,7 +12,6 @@ from lib.date_transform import string_transform_timestamp
 from lib.mysql_api import insert_news_to_mysql
 from lib.oss_api import upload_img_to_oss2
 from lib.source_html import get_tag_html
-import logging
 
 import logging
 logger = logging.getLogger("simple_example")
@@ -64,14 +62,19 @@ class IFengSpider(object):
                    "User-Agent": "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 "
                                  "(KHTML, like Gecko) Chrome/42.0.2311.90 Safari/537.36"
                    }
-        data_content = requests.get(url, timeout=3, headers=headers).text
-        if chardet.detect(data_content.encode('unicode-escape'))['encoding'] != 'unicode':
-            return char_change_utf8(data_content)
-        print [data_content]
+        data_content = requests.get(url, timeout=3, headers=headers).content
+        char_type = chardet.detect(data_content)
+        print char_type
+        if char_type['encoding'] == 'utf-8':
+            data_content = char_change_utf8(data_content)
+        if char_type['encoding'] == 'gbk':
+            data_content = char_change_gbk(data_content)
+        # print chardet.detect(data_content), 'ss'
         return data_content
 
     def detail_spider(self, url):
         content = self.get_content(url)
+
         soup = BeautifulSoup(content)
         news_detail_list = list()
         for data in soup.select(".box_txt"):
@@ -96,7 +99,6 @@ class IFengSpider(object):
             # 获取图片
             img_list = list()
             img_tag = u'<div><img alt="{img_title}" src="{img_url}"><span>{img_title}</span></div>'
-            print news
             for data in news_soup.select("#main_content"):
                 img_title = data.span.string if data.span.string else ''
                 try:
@@ -165,8 +167,9 @@ class IFengSpider(object):
                     if status:
                         artile += img_tag.format(img_url=img_url, img_title=img_title)
                         img_list.append([img_title, img_url])
-            for content in set(artile_list):
-                artile += content
+
+            for a_content in set(artile_list):
+                artile += a_content
             tmp_dict['artile'] = artile
             tmp_dict['img_list'] = img_list
             tmp_dict['source'] = news
@@ -184,7 +187,6 @@ class IFengSpider(object):
                     print traceback.format_exc()
                     logger.debug(traceback.format_exc())
                     continue
-                print 'run'
                 page += 1
             self.flag = 0
         insert_news_to_mysql(self.article_data_list)
@@ -206,5 +208,5 @@ class IFengSpider(object):
 
 
 if __name__ == '__main__':
-    souhu = IFengSpider('2016-2-06 10:00:00')
+    souhu = IFengSpider('2016-2-16 10:00:00')
     souhu.main()
